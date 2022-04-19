@@ -13,7 +13,6 @@ function handleKeyUp(event){
 }
 
 function jump(){
-
     isJumping = true;
 
     let upInterval = setInterval(() => {
@@ -34,7 +33,7 @@ function jump(){
         dino.style.bottom = position + 'px';
         }
 
-    }, 20);
+    }, 30);
 }
 
 function createCactus(){
@@ -43,25 +42,25 @@ function createCactus(){
     let randomTime = Math.random() * 6000;
 
     cactus.classList.add('cactus');
-    cactus.style.left = 1000 + 'px';
+    cactus.style.left = 1500 + 'px';
     background.appendChild(cactus);
 
     let leftInterval = setInterval(() =>{
-        if(cactusPosition < -60){
+        if(cactusPosition < -70){
             clearInterval(leftInterval);
             background.removeChild(cactus);
-        }else if (cactusPosition > 0 && cactusPosition < 60 && position < 60){
+        }else if (cactusPosition > 0 && cactusPosition < 40 && position < 40){
         
             clearInterval(leftInterval);
-            document.body.innerHTML ='<h1 class="game-over"> fim de jogo</h1>';
+            document.body.innerHTML ='<h1 class="game-over"> </h1>';
         }else{
             cactusPosition -= 10;
             cactus.style.left = cactusPosition + 'px';
         }
-    }, 20)
+    }, 90)
     setTimeout(createCactus, randomTime);
 }
 
 createCactus();
-document.addEventListener('keyup', handleKeyUp);
+document.addEventListener('keydown', handleKeyUp);
 
